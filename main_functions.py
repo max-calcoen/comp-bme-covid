@@ -92,3 +92,34 @@ def euler_sir(beta, gamma, S0, I0, R0, t, N):
         I[n + 1] = I[n] + dI * dt
         R[n + 1] = R[n] + dR * dt
     return S, I, R
+
+
+def sir_model_solve_ivp(beta, gamma, S0, I0, R0, t, N):
+    """
+    Solve the SIR model using scipy's solve_ivp.
+    Parameters:
+    - beta: Infection rate
+    - gamma: Recovery rate
+    - S0: Initial susceptible population
+    - I0: Initial infected population
+    - R0: Initial recovered population
+    - t: Array of time points (days or weeks)
+    - N: Total population
+    Returns:
+    - S: Array of susceptible population over time
+    - I: Array of infected population over time
+    - R: Array of recovered population over time
+    """
+    from scipy.integrate import solve_ivp
+
+    def sir_ode(t, y):
+        S, I, R = y
+        dSdt = -beta * S * I / N
+        dIdt = beta * S * I / N - gamma * I
+        dRdt = gamma * I
+        return [dSdt, dIdt, dRdt]
+
+    y0 = [S0, I0, R0]
+    sol = solve_ivp(sir_ode, [t[0], t[-1]], y0, t_eval=t, vectorized=True)
+    S, I, R = sol.y
+    return S, I, R
