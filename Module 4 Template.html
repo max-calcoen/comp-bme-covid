@@ -8171,7 +8171,9 @@ Optimized beta (IVP): 0.2657424534281002, Optimized gamma (IVP): 0.0716839916335
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Verify-and-validate-your-analysis:">Verify and validate your analysis:<a class="anchor-link" href="#Verify-and-validate-your-analysis:">¶</a></h2><p><em>(Describe how you checked to see that your analysis gave you an answer that you believe (verify). Describe how your determined if your analysis gave you an answer that is supported by other evidence (e.g., a published paper).</em></p>
+<h2 id="Verify-and-validate-your-analysis:">Verify and validate your analysis:<a class="anchor-link" href="#Verify-and-validate-your-analysis:">¶</a></h2><p>Using scipy's solve_ivp function, we implemented the runge-kutta (RK4) solver in order to check the accuracy of our analysis. After inlcuding the solve_ivp method, we implemented the SIR model simulation in order to find optimal gamma and beta values for our model of disease spread. Then, we calculated the sum of square errors on the second half of the generated model for both the euler's method data and the RK4 method.</p>
+<p>There have been a number of studies which incorporate SIR models of COVID-19 spread. One study in partiuclar, "An improved SIR model describing the epidemic dynamics of the COVID-19 in China," uses an SIR model to estimate the rate of infection in China during the window 21/01/2020–08/02/2021. The Euler's method gamma value was 0.005 and the solve_ivp gamma value was 0.07168399163359879, while the study utlizes a gamma value of 0.05, very close to that of the solve_ivp function. Notably, our Euler's method beta value was 0.2 and the solve_ivp beta value was 0.2657424534281002, but the study used a function of time to describe the beta function. This ultimately allowed for a more dynamic modeling of diease spread that may have been resposible for the model's high fidelity to real world data when projecting future data trends.</p>
+<p>Source: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8105082/">https://pmc.ncbi.nlm.nih.gov/articles/PMC8105082/</a></p>
 </div>
 </div>
 </div>
@@ -8182,7 +8184,8 @@ Optimized beta (IVP): 0.2657424534281002, Optimized gamma (IVP): 0.0716839916335
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Conclusions-and-Ethical-Implications:">Conclusions and Ethical Implications:<a class="anchor-link" href="#Conclusions-and-Ethical-Implications:">¶</a></h2><p><em>(Think about the answer your analysis generated, draw conclusions related to your overarching question, and discuss the ethical implications of your conclusions.</em></p>
+<h2 id="Conclusions-and-Ethical-Implications:">Conclusions and Ethical Implications:<a class="anchor-link" href="#Conclusions-and-Ethical-Implications:">¶</a></h2><p>Our Euler's method simulation generated a SIR model that was partially accurate according the the SSE calculation of the second half of the data. The solve_ivp method produced a better simulation which may be used to model the spread of COVID-19 in 2022.</p>
+<p>There are several ethical implications of creating an accurate model of disease spread. For one, knowing when waves of infection are imminent allows for the general allocation of vital resources to communities in need. Not only would this help in reducing the spread of disease, but it would also be economically responsible. Finally, this model must be used ethically in that there is always room for error. The accuracy of the model must be assessed in order to determine its viability in the early stages of simulation use.</p>
 </div>
 </div>
 </div>
@@ -8193,7 +8196,7 @@ Optimized beta (IVP): 0.2657424534281002, Optimized gamma (IVP): 0.0716839916335
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Limitations-and-Future-Work:">Limitations and Future Work:<a class="anchor-link" href="#Limitations-and-Future-Work:">¶</a></h2><p><em>(Think about the answer your analysis generated, draw conclusions related to your overarching question, and discuss the ethical implications of your conclusions.</em></p>
+<h2 id="Limitations-and-Future-Work:">Limitations and Future Work:<a class="anchor-link" href="#Limitations-and-Future-Work:">¶</a></h2><p>Our SIR model was very limited in its basic nature. Studies of dynamic SIR models incorporate a differential equation labeled "E" that model the exposed population. In a future study, we would include this element in order to better model disease spread. In addition, real world studies of COVID spread model the rate of trasmission as a function of time. Again, a future study would incorporate this element in order to create a more dynamic model of disease spread. Calculating SSE values for new models would allow us to assess their validity in comparison to the exisitng SIR model.</p>
 </div>
 </div>
 </div>
